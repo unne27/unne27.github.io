@@ -1,6 +1,8 @@
- <form action="/action_page.php">
-  <label for="fname">Password:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <input type="submit" value="Submit">
-</form> 
- 
+ <input onchange="goToPage(event)">
+<script>
+ function goToPage(e) {
+  let url="http://www.unne27.com/games/shooter/"+e.target.value;  
+  console.log(url);
+  window.location = url;
+}
+</script>
