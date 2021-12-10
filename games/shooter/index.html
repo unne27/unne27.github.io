@@ -10,9 +10,17 @@
 
   
  
-<textarea onchange="goToPage(event)">
+<input id="myinput">
 <script>
+ 
  var x = document.getElementById("myDIV");
+ var myInput = document.getElementById("myinput");
+myInput.onkeyup = function() {
+if(myInput.value == "ThisIsAPassword") {
+    x.style.display = "block";
+ 
+}
+ 
  function goToPage(e) {
  if(e.target.value == "ThisIsAPassword") { 
    
