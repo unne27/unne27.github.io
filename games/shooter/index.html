@@ -1,9 +1,19 @@
  <input onchange="goToPage(event)">
 <script>
+ var x = document.getElementById("myDIV");
  function goToPage(e) {
-  let url="http://www.unne27.com/games/shooter/"+e.target.value;  
-  console.log(url);
-  window.location = url;
+ if(e.target.value == "ThisIsAPassword") { 
+  
+  
+    x.style.display = "block";
+ 
+  
+}
+  
 }
 </script>
  
+<div id="myDiv">
+ test 
+</div>
+
