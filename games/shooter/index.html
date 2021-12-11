@@ -18,13 +18,15 @@
 
 
 <script>
-var bitArray = sjcl.hash.sha256.hash("ThisIsAPassword"); 
-var digest = sjcl.codec.hex.fromBits(bitArray);  
- console.log(digest);
+ //console.log(digest);
  var myInput = document.getElementById("myinput");
 myInput.onkeyup = function() {
  console.log(myInput.value);
-if(myInput.value == "ThisIsAPassword") {
+ var bitArray = sjcl.hash.sha256.hash(myInput.value); 
+ var digest = sjcl.codec.hex.fromBits(bitArray);  
+ console.log(digest);
+
+if(digest == "4ad371ae554684864912df9d54f410f8ba2331fced604363a8271eef116f6def") {
  
    var x = document.getElementById("myDiv");
    x.style.display = "block";
