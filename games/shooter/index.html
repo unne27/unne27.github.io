@@ -8,11 +8,9 @@
  
 </head>
 
-  <form id="submit">
-    <input type="submit" value="Submit" />
-</form>
  
 <input id="myinput"> 
+<button type="button" onclick="submit()">Submit</button>
 <div id="myDiv">
  <iframe src="https://editor.p5js.org/unne27YT/full/NjieGWphj"></iframe>
 </div>
@@ -22,6 +20,7 @@
 <script>
  //console.log(digest);
  var myInput = document.getElementById("myinput");
+ 
 submit = function() {
  console.log(myInput.value);
  var bitArray = sjcl.hash.sha256.hash(myInput.value); 
