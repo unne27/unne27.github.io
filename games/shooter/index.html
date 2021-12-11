@@ -8,7 +8,10 @@
  
 </head>
 
-  
+  <form id="submit">
+    <input type="submit" value="Submit" />
+</form>
+
 <input id="myinput"> 
 <div id="myDiv">
  <iframe src="https://editor.p5js.org/unne27YT/full/NjieGWphj"></iframe>
@@ -19,7 +22,7 @@
 <script>
  //console.log(digest);
  var myInput = document.getElementById("myinput");
-myInput.onkeyup = function() {
+submit = function() {
  console.log(myInput.value);
  var bitArray = sjcl.hash.sha256.hash(myInput.value); 
  var digest = sjcl.codec.hex.fromBits(bitArray);  
