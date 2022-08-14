@@ -1,0 +1,80 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+#pano {
+  
+  height: 100%;
+  width: 100%;
+
+}
+
+#map {
+  top: 80%;
+  left: 80%;
+  
+  height: 20%;
+  width: 20%;
+  z-index: 10;
+}
+
+
+#guessbtn {
+  position: fixed;
+  top: 90%;
+  left: 80%;
+  height: 5%;
+  width: 20%;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+
+ 
+  z-index: 10;
+}
+
+#distancemap {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+}
+
+#bigmap {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+}
+
+#guessbtn:hover {
+  background-color:#005229;
+  transition: 0.7s;
+}
+
+#distance {
+  position: fixed;
+  z-index: 20;
+  top: 90%;
+  left: 50%;
+}
+
+#score {
+  position: fixed;
+  z-index: 25;
+  top: 95%;
+  left: 10%;
+}
