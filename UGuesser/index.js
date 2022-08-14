@@ -338,7 +338,7 @@ function onbtnclicked() {
   line.setMap(distmap)
 } 
 document.getElementById("guessbtn").onclick = onbtnclicked
-
+google.maps.event.trigger(map, "resize");
 }
 
 
