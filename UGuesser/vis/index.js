@@ -1,62 +1,4 @@
-//import randomStreetView from '/GeoGuessrU/random-streetview/src/index.js';
-
 let map;
-
-//import randomStreetView from './random-streetview';
-
-//const { strictEqual } = require("assert");
-
-/*
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}
-*/
-var markers = []
-
-var MathHelper = {
-  // Get a value between two values
-  clamp: function (value, min, max) {
-
-      if (value < min) {
-          return min;
-      }
-      else if (value > max) {
-          return max;
-      }
-
-      return value;
-  },
-  // Get the linear interpolation between two value
-  lerp: function (value1, value2, amount) {
-      amount = amount < 0 ? 0 : amount;
-      amount = amount > 1 ? 1 : amount;
-      return value1 + (value2 - value1) * amount;
-  }
-
-};
-
-// Obtient une valeur comprise dans un interval
-Math.clamp = function (value, min, max) {
-
-if (value < min) {
-  return min;
-}
-else if (value > max) {
-  return max;
-}
-
-return value;
-};
-
-// Obtient une interpolation linéaire entre 2 valeurs
-Math.lerp = function (value1, value2, amount) {
-amount = amount < 0 ? 0 : amount;
-amount = amount > 1 ? 1 : amount;
-return value1 + (value2 - value1) * amount;
-};
 
 var positions = [
   { lat: 59.329910, lng: 18.067328 },
@@ -242,109 +184,23 @@ var positions = [
   {lat: -26.466743, lng: 31.470437},
   {lat: 64.132120, lng: -16.010340},
   {lat: 67.036492, lng: -52.472068},
-
+  
 ]
-
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
   
-function calcDistance(mk1, mk2) {
-  return google.maps.geometry.spherical.computeDistanceBetween (mk1, mk2) / 1000;
-}
-
-
-
 function initialize() {
-  
-  
- const panpos = positions[randomIntFromInterval(0, positions.length)];
-//const panpos = randomStreetView.getRandomLocations(1)
-console.log(panpos)
-  const centered = {lat: 0, lng: 0}
-
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: centered,
-    zoom: 2,
-    disableDefaultUI: true,
-  });
-  const panorama = new google.maps.StreetViewPanorama(
-    document.getElementById("pano"),
-    {
-      position: panpos,
-      pov: {
-        heading: 34,
-        pitch: 10,
-      },
-      disableDefaultUI: true,
-      showRoadLabels: false,
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: {lat: 0, lng: 0},
+        zoom: 2,
+        disableDefaultUI: true,
+      });
+    
+    for (let i = 0; i < positions.length; i++) {
+        var marker = new google.maps.Marker({
+            position: positions[i],
+            map,
+            title: "pos",
+          })
     }
-  );
-
-  map.setStreetView(panorama);
-  map.addListener("click", (mapsMouseEvent) => {
-    var latlng = mapsMouseEvent.latLng
-    var marker = new google.maps.Marker({
-      position: latlng,
-      map,
-      title: "Amogus",
-    })
-    for (let i = 0; i < markers.length; i++) {
-      markers[i].setMap(null)
-      markers.splice(i, 1)
-    }
-    markers.push(marker)
-  })
-  
-function onbtnclicked() {
-  var distance = calcDistance(markers[0].position, panpos)
-  var sigma = 3000
-  var score = (5000 * Math.exp(-0.5 * ((distance) / sigma)**2)).toFixed(0)
-  
-  console.log(markers)
- document.getElementById("mappano").style.display = "none"
- /* document.getElementById("distancemap").style.display = "block"
-  document.getElementById("distancemap").style.width = "100%"
-  document.getElementById("distancemap").style.height = "100%"*/
-  document.getElementById("distancemap").style = "display:block;width:100%;height:100%;"
-  document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
-  document.getElementById("score").innerText = score.toString()
-  var distmap = new google.maps.Map(document.getElementById("bigmap"), {
-    center : centered,
-    zoom : 2,
-    disableDefaultUI: true,
-  })
-  var yourpos = new google.maps.Marker({
-    position: markers[0].position,
-    map: distmap,
-    title: "Your position",
-  })
-  var corpos = new google.maps.Marker({
-    position: panpos,
-    map: distmap,
-    icon : "flag.png",
-    title: "A",
-  })
-  console.log("Placed markers!")
-  document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
-  var line = new google.maps.Polyline({
-    path: [yourpos.position, corpos.position],
-    geodesic: true,
-    strokeColor: '#000000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
-  })  
-  line.setMap(distmap)
-} 
-document.getElementById("guessbtn").onclick = onbtnclicked
-
 }
 
-
-
-window.onload = function() {
-  window.scrollTo(0, document.body.scrollHeight)
-}
-//window.initMap = initMap;
-window.initialize = initialize;
+window.initialize = initialize
