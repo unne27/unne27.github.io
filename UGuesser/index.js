@@ -11,7 +11,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 8,
-  }); 
+  });
 }
 */
 var markers = []
@@ -345,6 +345,7 @@ document.getElementById("guessbtn").onclick = onbtnclicked
 
 window.onload = function() {
   window.scrollTo(0, document.body.scrollHeight)
+  document.getElementById("map").style = "position: fixed;"
   google.maps.event.trigger(map, "resize");
 }
 //window.initMap = initMap;
