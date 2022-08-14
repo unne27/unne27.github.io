@@ -338,13 +338,14 @@ function onbtnclicked() {
   line.setMap(distmap)
 } 
 document.getElementById("guessbtn").onclick = onbtnclicked
-google.maps.event.trigger(map, "resize");
+
 }
 
 
 
 window.onload = function() {
   window.scrollTo(0, document.body.scrollHeight)
+  google.maps.event.trigger(map, "resize");
 }
 //window.initMap = initMap;
 window.initialize = initialize;
