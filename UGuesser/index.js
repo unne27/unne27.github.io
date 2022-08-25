@@ -257,7 +257,7 @@ var positions = [
   {lat: 15.252502, lng: -14.701369},
   {lat: -41.161122, lng: 146.346947},
   {lat: 65.830986, lng: -38.020301},
-  
+
 ]
 
 function randomIntFromInterval(min, max) { // min and max included 
@@ -315,8 +315,10 @@ console.log(panpos)
 function onbtnclicked() {
   var distance = calcDistance(markers[0].position, panpos)
   var sigma = 3000
-  var score = (5000 * Math.exp(-0.5 * ((distance) / sigma)**2)).toFixed(0)
-  
+  var score = (5000 - (distance / 3)).toFixed(0)
+  if (score < 0) {
+    score = 0
+  }
   console.log(markers)
  document.getElementById("mappano").style.display = "none"
  /* document.getElementById("distancemap").style.display = "block"
