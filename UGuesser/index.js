@@ -278,9 +278,6 @@ function calcDistance(mk1, mk2) {
 
 function guess() {
   document.getElementById("mappano").style.display = "block"
-  /* document.getElementById("distancemap").style.display = "block"
-   document.getElementById("distancemap").style.width = "100%"
-   document.getElementById("distancemap").style.height = "100%"*/
    document.getElementById("distancemap").style = "display:none;width:100%;height:100%;"
    document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
    
@@ -288,9 +285,6 @@ function guess() {
 
 function results(score) {
   document.getElementById("mappano").style.display = "none"
-  /* document.getElementById("distancemap").style.display = "block"
-   document.getElementById("distancemap").style.width = "100%"
-   document.getElementById("distancemap").style.height = "100%"*/
    document.getElementById("distancemap").style = "display:block;width:100%;height:100%;"
    document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
    document.getElementById("score").innerText = score.toString()
@@ -337,6 +331,8 @@ console.log(panpos)
     markers.push(marker)
   })
   
+
+
 function onbtnclicked() {
   var distance = calcDistance(markers[0].position, panpos)
   var sigma = 3000
@@ -391,7 +387,7 @@ function onbtnclicked() {
     guess()
     
     } else {
-    document.getElementById("score").innerHTML = score.toString()
+    document.getElementById("score").innerHTML = totalscore.toString()
     document.getElementById("distance").innerHTML = ""
     for(let i = 0; i < guesses.length; i++) {
       var yourmarker = new google.maps.Marker({
