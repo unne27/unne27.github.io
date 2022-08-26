@@ -336,10 +336,11 @@ console.log(panpos)
 function onbtnclicked() {
   var distance = calcDistance(markers[0].position, panpos)
   var sigma = 3000
-  var score = (5000 - (distance / 3)).toFixed(0)
+  var score = parseInt((5000 - (distance / 3)).toFixed(0))
   if (score < 0) {
-    score = 0
+    score = 0 
   }
+  totalscore += score
   console.log(markers)
   results(score)
 
@@ -372,7 +373,7 @@ function onbtnclicked() {
 
   guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
 
-  totalscore += score
+  
 
   function onnextclicked() {
     markers[0].setMap(null)
@@ -419,7 +420,11 @@ function onbtnclicked() {
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
 document.getElementById("guessbtn").onclick = onbtnclicked
-
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode == 32) {
+    onbtnclicked()
+  }
+})
 }
 
 
