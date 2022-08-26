@@ -260,6 +260,12 @@ var positions = [
 
 ]
 
+let round = 1
+
+let totalscore = 0
+
+let guesses = []
+
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -270,11 +276,30 @@ function calcDistance(mk1, mk2) {
 }
 
 
+function guess() {
+  document.getElementById("mappano").style.display = "block"
+  /* document.getElementById("distancemap").style.display = "block"
+   document.getElementById("distancemap").style.width = "100%"
+   document.getElementById("distancemap").style.height = "100%"*/
+   document.getElementById("distancemap").style = "display:none;width:100%;height:100%;"
+   document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
+   
+}
+
+function results(score) {
+  document.getElementById("mappano").style.display = "none"
+  /* document.getElementById("distancemap").style.display = "block"
+   document.getElementById("distancemap").style.width = "100%"
+   document.getElementById("distancemap").style.height = "100%"*/
+   document.getElementById("distancemap").style = "display:block;width:100%;height:100%;"
+   document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
+   document.getElementById("score").innerText = score.toString()
+}
 
 function initialize() {
   
   
- const panpos = positions[randomIntFromInterval(0, positions.length)];
+ var panpos = positions[randomIntFromInterval(0, positions.length)];
 //const panpos = randomStreetView.getRandomLocations(1)
 console.log(panpos)
   const centered = {lat: 0, lng: 0}
@@ -284,7 +309,7 @@ console.log(panpos)
     zoom: 2,
     disableDefaultUI: true,
   });
-  const panorama = new google.maps.StreetViewPanorama(
+  var panorama = new google.maps.StreetViewPanorama(
     document.getElementById("pano"),
     {
       position: panpos,
@@ -320,13 +345,8 @@ function onbtnclicked() {
     score = 0
   }
   console.log(markers)
- document.getElementById("mappano").style.display = "none"
- /* document.getElementById("distancemap").style.display = "block"
-  document.getElementById("distancemap").style.width = "100%"
-  document.getElementById("distancemap").style.height = "100%"*/
-  document.getElementById("distancemap").style = "display:block;width:100%;height:100%;"
-  document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
-  document.getElementById("score").innerText = score.toString()
+  results(score)
+
   var distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
@@ -341,7 +361,7 @@ function onbtnclicked() {
     position: panpos,
     map: distmap,
     icon : "flag.png",
-    title: "A",
+    title: "Correct position",
   })
   console.log("Placed markers!")
   document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
@@ -353,6 +373,54 @@ function onbtnclicked() {
     strokeWeight: 2,
   })  
   line.setMap(distmap)
+
+  guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
+
+  totalscore += score
+
+  function onnextclicked() {
+    markers[0].setMap(null)
+    markers = []
+    line.setMap(null)
+    
+
+    round += 1
+    if (round <= 5) {
+    panpos = positions[randomIntFromInterval(0, positions.length)];
+    panorama.setPosition(panpos)
+    guess()
+    
+    } else {
+    document.getElementById("score").innerHTML = score.toString()
+    document.getElementById("distance").innerHTML = ""
+    for(let i = 0; i < guesses.length; i++) {
+      var yourmarker = new google.maps.Marker({
+        position : guesses[i]["guesspos"],
+        map: distmap,
+        title: "Your position",
+      })
+
+      var cormarker = new google.maps.Marker({
+        position: guesses[i]["corpos"],
+        map: distmap,
+        icon: "flag.png",
+        title: "Correct position",
+        
+      })
+      var newline = new google.maps.Polyline({
+        path: [guesses[i]["guesspos"], guesses[i]["corpos"]],
+        geodesic: false,
+        strokeColor: '#000000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+      })
+      newline.setMap(distmap)
+    }
+
+    }
+
+  }
+document.getElementById("nextbtn").onclick = onnextclicked
 } 
 document.getElementById("guessbtn").onclick = onbtnclicked
 
