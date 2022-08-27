@@ -199,16 +199,30 @@ var positions = [
   {lat: 15.252502, lng: -14.701369},
   {lat: -41.161122, lng: 146.346947},
   {lat: 65.830986, lng: -38.020301},
+  {lat: 17.494236, lng: 78.398496},
+  {lat: 20.017816, lng: 79.212303},
+  {lat: 20.051364, lng: 73.880845},
+  {lat: 27.849915, lng: 86.749681},
+  {lat: 45.611555, lng: 123.424150},
+  {lat: 53.616388, lng: -113.401754},
+  {lat: 54.447543, lng: -113.440160},
+  {lat: 61.192097, lng: -149.912937},
+  {lat: 61.460839, lng: -6.791777},
+  {lat: 62.114975, lng: -6.906521},
+  {lat: 35.893374, lng: 14.475236},
+  {lat: 13.471390, lng: 144.804596},
   
 ]
+
   
 function initialize() {
+
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 0, lng: 0},
         zoom: 2,
         disableDefaultUI: true,
       });
-    
+    document.getElementById("map").style = ""
     for (let i = 0; i < positions.length; i++) {
         var marker = new google.maps.Marker({
             position: positions[i],
@@ -216,6 +230,13 @@ function initialize() {
             title: "pos",
           })
     }
+    document.getElementById("map").style = ""
 }
 
+function onload() {
+  document.getElementById("map").style = ""
+}
+
+
 window.initialize = initialize
+window.onload = onload
