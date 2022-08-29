@@ -334,7 +334,7 @@ console.log(panpos)
     var marker = new google.maps.Marker({
       position: latlng,
       map,
-      title: "Amogus",
+      title: "Your guess",
     })
     for (let i = 0; i < markers.length; i++) {
       markers[i].setMap(null)
@@ -343,9 +343,10 @@ console.log(panpos)
     markers.push(marker)
   })
   
-
+  document.getElementById("round").innerText = "Round: " + round.toString()
 
 function onbtnclicked() {
+  document.getElementById("round").innerText = "Round: " + round.toString()
   var distance = calcDistance(markers[0].position, panpos)
   var sigma = 3000
   var score = parseInt((5000 - (distance / 2.5)).toFixed(0))
@@ -378,7 +379,7 @@ function onbtnclicked() {
   document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
   var line = new google.maps.Polyline({
     path: [yourpos.position, corpos.position],
-    geodesic: true,
+    geodesic: false,
     strokeColor: '#000000',
     strokeOpacity: 1.0,
     strokeWeight: 2,
@@ -399,6 +400,7 @@ function onbtnclicked() {
     if (round <= 5) {
     panpos = positions[randomIntFromInterval(0, positions.length)];
     panorama.setPosition(panpos)
+    document.getElementById("round").innerText = "Round: " + round.toString()
     guess()
     
     } else {
@@ -436,7 +438,10 @@ document.getElementById("nextbtn").onclick = onnextclicked
 document.getElementById("guessbtn").onclick = onbtnclicked
 document.addEventListener('keydown', function(event) {
   if (event.keyCode == 32) {
-    onbtnclicked()
+    console.log(getComputedStyle(document.getElementById("guessbtn")).display)
+    if (getComputedStyle(document.getElementById("guessbtn")).display == "block" || getComputedStyle(document.getElementById("guessbtn")).display == "inline-block") {
+      onbtnclicked()
+    }
   }
 })
 }
