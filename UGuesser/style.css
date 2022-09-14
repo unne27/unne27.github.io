@@ -118,3 +118,10 @@ body {
   top: 85%;
   left: 10%;
 }
+
+#pb {
+  position: fixed;
+  z-index: 25;
+  top: 25%;
+  left: 10%;
+}

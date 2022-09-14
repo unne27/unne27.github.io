@@ -334,6 +334,7 @@ function initialize() {
         center: {lat: 0, lng: 0},
         zoom: 2,
         disableDefaultUI: true,
+        
       });
     document.getElementById("map").style = ""
     for (let i = 0; i < positions.length; i++) {

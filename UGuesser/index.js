@@ -545,7 +545,18 @@ function onbtnclicked() {
       })
       newline.setMap(distmap)
     }
-
+    let unparsedPb = window.localStorage.getItem('pb')
+    let pb = parseInt(window.localStorage.getItem('pb'))
+    if (totalscore > pb || unparsedPb == null) {
+      console.log("New pb!")
+      pb = score 
+      window.localStorage.setItem('pb', pb)
+      document.getElementById("pb").innerText = "Personal best: " + pb.toString() + "\n New record!"
+    } else {
+      document.getElementById("pb").innerText = "Personal best: " + pb.toString()
+      console.log("No new pb")
+    }
+    
     }
 
   }
