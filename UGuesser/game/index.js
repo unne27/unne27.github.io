@@ -549,7 +549,7 @@ function onbtnclicked() {
     let pb = parseInt(window.localStorage.getItem('pb'))
     if (totalscore > pb || unparsedPb == null) {
       console.log("New pb!")
-      pb = score 
+      pb = totalscore 
       window.localStorage.setItem('pb', pb)
       document.getElementById("pb").innerText = "Personal best: " + pb.toString() + "\n New record!"
     } else {
