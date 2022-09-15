@@ -14,6 +14,20 @@ function initMap() {
   });
 }
 */
+
+String.prototype.insert = function(index, string) {
+  if (index > 0) {
+    return this.substring(0, index) + string + this.substr(index);
+  }
+
+  return string + this;
+};
+
+
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+}
+
 var markers = []
 
 var MathHelper = {
@@ -405,7 +419,7 @@ var positions = [
   {lat: -27.258415, lng: 117.981775},
   {lat: -21.590421, lng: 115.938362},
   {lat: -43.170113, lng: 146.925685},
-  
+
 ]
 
 
@@ -442,8 +456,50 @@ function results(score) {
 }
 
 function initialize() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const isCustomMap = urlParams.get('isCustomMap')
   
-  
+
+  if (isCustomMap == "true") {
+    console.log("Yes")
+    var customMap = urlParams.get('customMap')
+    var arr = []
+    positions = []
+    
+    arr = customMap.split('>')
+
+    for (let i = 0; i < arr.length; i++) {
+      var arr2 = arr[i].split(',')
+
+      var int1
+      var int2
+
+      for(let i = 0; i < arr2[0].length; i++) {
+        if (arr2[0][i] == ':') {
+          var substrr = arr2[0].substring(i)
+          int1 = parseFloat(substrr.substring(1).substring(0, substrr.substring(1).length - 1))
+          console.log(arr2[0].substring(i))
+        } 
+      }
+
+      for(let i = 0; i < arr2[1].length; i++) {
+        if (arr2[1][i] == ':') {
+          var substrr = arr2[1].substring(i)
+          int2 = parseFloat(substrr.substring(1).substring(0, substrr.substring(1).length - 1))
+          console.log(arr2[1].substring(i))
+        }
+      }
+
+      console.log(int1)
+      console.log(arr2)
+
+      positions.push({lat: int1, lng: int2})
+    }
+    console.log(positions)
+  }
+
+
  var panpos = positions[randomIntFromInterval(0, positions.length)];
 //const panpos = randomStreetView.getRandomLocations(1)
 console.log(panpos)

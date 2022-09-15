@@ -28,3 +28,28 @@
     top: 40%;
     left: 50%;
 }
+
+#mapmaker {
+    position: fixed;
+    top: 70%;
+    left: 30%;
+    height: 5%;
+    width: 40%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  
+   
+    z-index: 10;
+}
+
+#mapmaker:hover {
+    background-color:#005229;
+    transition: 0.7s;
+}

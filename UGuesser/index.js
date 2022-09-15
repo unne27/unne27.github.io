@@ -10,6 +10,14 @@ document.getElementById("play").onclick = function() {
     window.location.replace(hrefurl);
 }
 
+document.getElementById("mapmaker").onclick = function() {
+    const hrefurl = getCurrentURL() + "/mapmaker"
+    window.location.href = hrefurl;
+
+    
+    window.location.replace(hrefurl);
+}
+
 window.onload = function() {
     document.getElementById('pb').innerText = window.localStorage.getItem('pb')
 
