@@ -7,6 +7,11 @@ function getCurrentURL () {
 
   var delMarker = function (markerPar) {
     markerPar.setMap(null);
+    for (let i = 0; i < locations.length; i++) {
+      if (locations[i] == markerPar.position) {
+        delete locations[i]
+      }
+    }
 }
 
 String.prototype.insert = function(index, string) {
