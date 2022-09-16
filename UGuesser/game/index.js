@@ -626,6 +626,7 @@ function onbtnclicked() {
     }
     let unparsedPb = window.localStorage.getItem('pb')
     let pb = parseInt(window.localStorage.getItem('pb'))
+    if (isCustomMap != "true") {
     if (totalscore > pb || unparsedPb == null) {
       console.log("New pb!")
       pb = totalscore 
@@ -637,7 +638,7 @@ function onbtnclicked() {
     }
     
     }
-
+  }
   }
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
