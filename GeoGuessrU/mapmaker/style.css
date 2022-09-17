@@ -1,0 +1,30 @@
+#map {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+#donebtn {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    height: 5%;
+    width: 40%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  
+   
+    z-index: 10;
+  }
+  
+  #donebtn:hover {
+    background-color:#005229;
+    transition: 0.7s;
+  }
