@@ -431,7 +431,9 @@ let totalscore = 0
 
 let guesses = []
 
+let oppGuessed = false
 
+let distmap
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -536,21 +538,31 @@ var isServer
     opponentname = urlParams.get("opponentName")
     isServer = urlParams.get("isServer")
   }
-var guess = null
+var mguess = null
   
+var firstFrame = true
 var panpos = positions[randomIntFromInterval(0, positions.length)];
 console.log("panpos", panpos)
-  function submitData(guess) {
+  function submitData(pguess) {
+    var data
+    if (firstFrame) {
+      data = {
+        guessed: false,
+        guesslat: guesslat,
+        guesslong: guesslong,
+        panpos: panpos,
+      }
+    }
     //var curtime = millis() / 1000.
     var guesslat = 0
     var guesslong = 0
 
-    if (guess != null) {
-      guesslat = guess.lat()
-      guesslong = guess.lng()
+    if (mguess != null) {
+      guesslat = mguess.lat()
+      guesslong = mguess.lng()
     }
 
-    var data = {
+    data = {
       guessed: guessed,
       guesslat: guesslat,
       guesslong: guesslong,
@@ -614,12 +626,13 @@ console.log("panpos", panpos)
 
   if (duels) {
   setInterval(function () {
-    submitData(guess)
+    submitData(mguess)
     getData()
   
   }, 1000);
   }
 
+  var gotInfo = false
   var hasConnected = false
   function gotData(data) {
     console.log("Opponent name " + opponentname)
@@ -634,6 +647,18 @@ console.log("panpos", panpos)
         panorama.setPosition(DBdata.panpos)
         hasConnected = true
       }
+      oppGuessed = DBdata.guessed
+      if (!gotInfo && (DBdata.guessed == true || DBdata.guessed == "true") && guessed) {
+        gotInfo = true
+        
+        var oppMarker = new google.maps.Marker({
+          position: {lat: DBdata.guesslat, lng: DBdata.guesslong},
+          map: distmap,
+          title: "Opponent position"
+        })
+        console.log(oppMarker)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+      }
     } else {
       
       console.log("Cannot find opponent")
@@ -644,10 +669,10 @@ console.log("panpos", panpos)
 function onbtnclicked() {
   document.getElementById("round").innerText = "Round: " + round.toString()
   var distance = calcDistance(markers[0].position, panpos)
-
+  guessed = true
   var score = parseInt((5000 - (distance / 2.5)).toFixed(0))
   if (score < 0) {
-    score = 0 
+    score = 0
   }
   totalscore += score
   
@@ -655,7 +680,7 @@ function onbtnclicked() {
   console.log(totalscore)
   results(score)
 
-  var distmap = new google.maps.Map(document.getElementById("bigmap"), {
+  distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
     disableDefaultUI: true,
@@ -671,6 +696,7 @@ function onbtnclicked() {
     icon : "flag.png",
     title: "Correct position",
   })
+  
   console.log("Placed markers!")
   document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
   var line = new google.maps.Polyline({
@@ -685,7 +711,7 @@ function onbtnclicked() {
   guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
 
   if (duels) {
-    guess = markers[0].position
+    mguess = markers[0].position
    // submitData(markers[0].position)
  /*   var oppos = new google.maps.Marker({
       
@@ -704,6 +730,11 @@ function onbtnclicked() {
     panorama.setPosition(panpos)
     document.getElementById("round").innerText = "Round: " + round.toString()
     guess()
+    guessed = false
+    mguess = null
+    gotInfo = false
+    hasConnected = false
+ 
     
     } else {
     document.getElementById("score").innerHTML = totalscore.toString()
@@ -752,6 +783,7 @@ document.getElementById("nextbtn").onclick = onnextclicked
 document.getElementById("guessbtn").onclick = onbtnclicked
 document.addEventListener('keydown', function(event) {
   if (event.keyCode == 32) {
+    guessed = true
     console.log(getComputedStyle(document.getElementById("guessbtn")).display)
     if (getComputedStyle(document.getElementById("guessbtn")).display == "block" || getComputedStyle(document.getElementById("guessbtn")).display == "inline-block") {
       onbtnclicked()
