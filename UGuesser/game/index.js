@@ -501,7 +501,7 @@ var positions = [
   {lat: 42.211392, lng: 77.697858},
   {lat: 41.499851, lng: 72.407603},
   {lat: 40.535087, lng: 72.816239},
-  
+
 
 ]
 
@@ -541,7 +541,6 @@ function results(score) {
    document.getElementById("bigmap").style =   "height: 100%; width: 100%;  position: fixed; top: 0%;  left: 0%;"
    document.getElementById("score").innerText = score.toString()
 }
-
 
 
 function initialize() {
@@ -689,6 +688,8 @@ console.log("panpos", panpos)
       showRoadLabels: false,
     }
   );
+
+  
 
   map.setStreetView(panorama);
   map.addListener("click", (mapsMouseEvent) => {
@@ -877,10 +878,13 @@ document.addEventListener('keydown', function(event) {
 
 
 
+
+
 window.onload = function() {
   window.scrollTo(0, document.body.scrollHeight)
   document.getElementById("map").style = "position: fixed;"
   google.maps.event.trigger(map, "resize");
+  document.getElementById("pano").style = "position: fixed;"
 }
 //window.initMap = initMap;
-window.initialize = initialize;
+//window.initialize = initialize;

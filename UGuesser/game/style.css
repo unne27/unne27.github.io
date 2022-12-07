@@ -8,6 +8,7 @@ body {
 
 #pano {
   z-index: 0;
+  position: fixed;
   height: 100%;
   width: 100%;
 

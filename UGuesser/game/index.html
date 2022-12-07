@@ -16,12 +16,12 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./index.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
   </head>
   <body>
     <div id="mappano">
     <div id="map"></div>
-    <div id="pano"></div>
+    <div id="pano" style="position: fixed;"></div>
     <div id="round"></div>
     <button type="button" id="guessbtn">Guess</button>
     </div>
@@ -39,7 +39,7 @@
      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
     -->
     <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4pB_pLJpBk2iF0U4u7Hx8886VfhzAGcc"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4pB_pLJpBk2iF0U4u7Hx8886VfhzAGcc&callback=initialize"
           async
           defer
      ></script>
