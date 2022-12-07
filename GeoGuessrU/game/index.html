@@ -1,0 +1,54 @@
+<!--DOCTYPE html-->
+
+
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ5XNG7P2E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CZ5XNG7P2E', {cookie_flags: 'SameSite=None;Secure'});
+</script>
+    <meta charset="utf-8">
+    <title>UGuesser alpha 5.0.1</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div id="mappano">
+    <div id="map"></div>
+    <div id="pano"></div>
+    <div id="round"></div>
+    <button type="button" id="guessbtn">Guess</button>
+    </div>
+    <div id="distancemap">
+      <div id="bigmap"></div>
+      <div id="distance"></div>
+      <div id="score"></div>
+      <div id="pb"></div>
+      <button type="button" id="nextbtn">Next</button>
+    </div>
+    <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4pB_pLJpBk2iF0U4u7Hx8886VfhzAGcc&callback=initMap&callback=initialize"
+          async
+          defer
+     ></script>
+
+    <!-- Google tag (gtag.js) -->
+
+
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  </body>
+</html>
