@@ -545,20 +545,9 @@ function results(score) {
 
 function initialize() {
 
-  // Firebase config
-  const fconfig = {
-    apiKey: "AIzaSyCTlOAUE257-ZtljAgQiy3Bdvah13qe7wk",
-    authDomain: "multiplayerrelay01.firebaseapp.com",
-    databaseURL: "https://multiplayerrelay01-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "multiplayerrelay01",
-    storageBucket: "multiplayerrelay01.appspot.com",
-    messagingSenderId: "885912701667",
-    appId: "1:885912701667:web:dcd5640075c66b8fa393d6",
-    measurementId: "G-MTRC9V8LEE"
-  };
 
-  firebase.initializeApp(fconfig)
-  let database = firebase.database()
+
+
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -603,68 +592,18 @@ function initialize() {
     console.log(positions)
   }
 
-  var duels = urlParams.get("isDuels")
+
+
+
+
+
   
-  if (duels) {
-    duels = Boolean(duels)
-  }
-
-var opponentname
-var playername
-var guessed = false
-var isServer
-
-
-  if (duels) {
-    playername = urlParams.get("playerName")
-    opponentname = urlParams.get("opponentName")
-    isServer = urlParams.get("isServer")
-  }
-var mguess = null
   
 var firstFrame = true
 var panpos = positions[randomIntFromInterval(0, positions.length)];
 console.log("panpos", panpos)
-  function submitData(pguess) {
-    var data
-    if (firstFrame) {
-      data = {
-        guessed: false,
-        guesslat: guesslat,
-        guesslong: guesslong,
-        panpos: panpos,
-      }
-    }
-    //var curtime = millis() / 1000.
-    var guesslat = 0
-    var guesslong = 0
 
-    if (mguess != null) {
-      guesslat = mguess.lat()
-      guesslong = mguess.lng()
-    }
 
-    data = {
-      guessed: guessed,
-      guesslat: guesslat,
-      guesslong: guesslong,
-      panpos: panpos,
-  //    time: curtime
-    }
-    var ref = database.ref('Player' + playername);
-    ref.set(data);
-  
-  }
-  
-  function getData() {
-    var ref = database.ref('Player' + opponentname);
-    ref.on('value', gotData, errData);
-  }
-
-  
-  function errData(data) {
-    console.log("database error")
-  }
 
 
 //const panpos = randomStreetView.getRandomLocations(1)
@@ -708,47 +647,10 @@ console.log("panpos", panpos)
   
   document.getElementById("round").innerText = "Round: " + round.toString()
 
-  if (duels) {
-  setInterval(function () {
-    submitData(mguess)
-    getData()
-  
-  }, 1000);
-  }
 
-  var gotInfo = false
-  var hasConnected = false
-  function gotData(data) {
-    console.log("Opponent name " + opponentname)
-    console.log("Player name " + playername)
 
-    var DBdata = data.val();
-    if(DBdata != null) {
-      console.log(DBdata)
-      console.log("opponent position:", DBdata.guesslat, DBdata.guesslong)
-      if (!hasConnected && !isServer) {
-        panpos = DBdata.panpos
-        panorama.setPosition(DBdata.panpos)
-        hasConnected = true
-      }
-      oppGuessed = DBdata.guessed
-      if (!gotInfo && (DBdata.guessed == true || DBdata.guessed == "true") && guessed) {
-        gotInfo = true
-        
-        var oppMarker = new google.maps.Marker({
-          position: {lat: DBdata.guesslat, lng: DBdata.guesslong},
-          map: distmap,
-          title: "Opponent position"
-        })
-        console.log(oppMarker)
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      }
-    } else {
-      
-      console.log("Cannot find opponent")
-    }
-    
-  }
+
+ 
 
 function onbtnclicked() {
   document.getElementById("round").innerText = "Round: " + round.toString()
@@ -794,13 +696,7 @@ function onbtnclicked() {
 
   guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
 
-  if (duels) {
-    mguess = markers[0].position
-   // submitData(markers[0].position)
- /*   var oppos = new google.maps.Marker({
-      
-    }) */
-  }
+
 
   function onnextclicked() {
     markers[0].setMap(null)
@@ -815,9 +711,7 @@ function onbtnclicked() {
     document.getElementById("round").innerText = "Round: " + round.toString()
     guess()
     guessed = false
-    mguess = null
-    gotInfo = false
-    hasConnected = false
+
  
     
     } else {
