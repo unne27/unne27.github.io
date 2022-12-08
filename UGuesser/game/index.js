@@ -656,9 +656,9 @@ function onbtnclicked() {
   document.getElementById("round").innerText = "Round: " + round.toString()
   var distance = calcDistance(markers[0].position, panpos)
   guessed = true
-  var score = parseInt((5000 - (distance / 3.5)).toFixed(0))
+  var score = parseInt((5000 - (distance)).toFixed(0))
   if (score < 0) {
-    score = 0
+    score = 0 
   }
   totalscore += score
   
