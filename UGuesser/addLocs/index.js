@@ -19,7 +19,7 @@ function initialize() {
     map.addListener("click", (mapsMouseEvent) => {
      //   navigator.permissions.query({name: "clipboard-write"}).then((result) => {
        //     if (result.state === "granted" || result.state === "prompt") {
-              var newstr = "{lat: " + mapsMouseEvent.latLng.lat + ", lng: " + mapsMouseEvent.latLng.lng + "}"
+              var newstr = "{lat: " + mapsMouseEvent.latLng.lat() + ", lng: " + mapsMouseEvent.latLng.lng() + "}"
               updateClipboard(newstr)
               var marker = new google.maps.Marker({
                 position: mapsMouseEvent.latLng,
