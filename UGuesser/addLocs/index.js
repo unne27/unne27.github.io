@@ -3,7 +3,8 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 0, lng: 0},
         zoom: 2,
-        disableDefaultUI: true,
+        //mapTypeId: "streetview",
+        disableDefaultUI: false,
         
       });
     document.getElementById("map").style = ""
@@ -19,7 +20,7 @@ function initialize() {
     map.addListener("click", (mapsMouseEvent) => {
      //   navigator.permissions.query({name: "clipboard-write"}).then((result) => {
        //     if (result.state === "granted" || result.state === "prompt") {
-              var newstr = "{lat: " + mapsMouseEvent.latLng.lat() + ", lng: " + mapsMouseEvent.latLng.lng() + "}"
+              var newstr = "{lat: " + mapsMouseEvent.latLng.lat() + ", lng: " + mapsMouseEvent.latLng.lng() + "},"
               updateClipboard(newstr)
               var marker = new google.maps.Marker({
                 position: mapsMouseEvent.latLng,
