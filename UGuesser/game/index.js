@@ -637,7 +637,7 @@ console.log("panpos", panpos)
     }
   );
 
-  
+console.log(panorama.getPov())
 
   map.setStreetView(panorama);
   map.addListener("click", (mapsMouseEvent) => {
