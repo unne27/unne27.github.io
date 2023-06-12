@@ -654,7 +654,11 @@ console.log(panorama.getPov())
     markers.push(marker)
     console.log(panorama.getPov())
   })
-  
+
+  google.maps.event.addListener(panorama, 'pov_changed', function() {
+    console.log(panorama.getPov())
+  })
+
   document.getElementById("round").innerText = "Round: " + round.toString()
 
 
