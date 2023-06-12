@@ -515,7 +515,7 @@ var positions = [
 ]
 
 function rounding(number, increment, offset) {
-  return Math.ceil((number - offset) / increment ) * increment + offset;
+  return Math.round((number - offset) / increment ) * increment + offset;
 }
 
 
