@@ -514,7 +514,9 @@ var positions = [
   
 ]
 
-
+function round(number, increment, offset) {
+  return Math.ceil((number - offset) / increment ) * increment + offset;
+}
 
 
 let round = 1
@@ -656,7 +658,23 @@ console.log(panorama.getPov())
   })
 
   google.maps.event.addListener(panorama, 'pov_changed', function() {
-    console.log(panorama.getPov())
+    //console.log(panorama.getPov())
+    
+    pov = panorama.getPov()
+    dir = pov.heading
+    text = document.getElementById("compass")
+    roundedNum = round(dir, 90, 0)
+    originText = str(dir) + " "
+    if (roundedNum == 0) {
+      text.innerText = originText + "North"
+    } else if (roundedNum == 90) {
+      text.innerText = originText + "East"
+    } else if(roundedNum == 180) {
+      text.innerText = originText + "South"
+    } else if (roundedNum == 270) {
+      text.innerText = originText + "West"
+    }
+
   })
 
   document.getElementById("round").innerText = "Round: " + round.toString()

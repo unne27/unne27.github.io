@@ -52,6 +52,13 @@ body {
   z-index: 10;
 }
 
+#compass {
+  position: fixed;
+  z-index: 25;
+  top: 15%;
+  left: 50%;
+}
+
 #distancemap {
   display: none;
   width: 100%;
