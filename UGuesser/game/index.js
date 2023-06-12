@@ -665,14 +665,16 @@ console.log(panorama.getPov())
     text = document.getElementById("compass")
     roundedNum = rounding(dir, 90, 0)
     originText = dir.toString() + " "
-    if (roundedNum == 0) {
-      text.innerText = originText + "North"
-    } else if (roundedNum == 90) {
+
+      
+    if (roundedNum == 90) {
       text.innerText = originText + "East"
     } else if(roundedNum == 180) {
       text.innerText = originText + "South"
     } else if (roundedNum == 270) {
       text.innerText = originText + "West"
+    } else {
+      text.innerText = originText + "North"
     }
 
   })
