@@ -652,6 +652,7 @@ console.log(panorama.getPov())
       markers.splice(i, 1)
     }
     markers.push(marker)
+    console.log(panorama.getPov())
   })
   
   document.getElementById("round").innerText = "Round: " + round.toString()
