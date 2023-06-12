@@ -55,8 +55,10 @@ body {
 #compass {
   position: fixed;
   z-index: 25;
-  top: 15%;
+  top: 5%;
   left: 50%;
+  font-size: large;
+  color: white;
 }
 
 #distancemap {
