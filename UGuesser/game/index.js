@@ -514,7 +514,7 @@ var positions = [
   
 ]
 
-function round(number, increment, offset) {
+function rounding(number, increment, offset) {
   return Math.ceil((number - offset) / increment ) * increment + offset;
 }
 
@@ -663,7 +663,7 @@ console.log(panorama.getPov())
     pov = panorama.getPov()
     dir = pov.heading
     text = document.getElementById("compass")
-    roundedNum = round(dir, 90, 0)
+    roundedNum = rounding(dir, 90, 0)
     originText = str(dir) + " "
     if (roundedNum == 0) {
       text.innerText = originText + "North"
