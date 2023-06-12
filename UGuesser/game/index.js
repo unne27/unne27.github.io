@@ -661,7 +661,7 @@ console.log(panorama.getPov())
     //console.log(panorama.getPov())
     
     pov = panorama.getPov()
-    dir = pov.heading
+    dir = Math.floor(pov.heading)
     text = document.getElementById("compass")
     roundedNum = rounding(dir, 90, 0)
     originText = dir.toString() + " "
