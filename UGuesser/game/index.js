@@ -511,6 +511,22 @@ var positions = [
   {lat: 13.368284, lng: 103.848832},
   {lat: 12.071578, lng: 106.421650},
   {lat: 16.421821, lng: 103.073510},
+  {lat: 6.729507, lng: 4.637991},
+  {lat: 8.633617, lng: 6.917518},
+  {lat: 11.557164, lng: 9.129968},
+  {lat: 10.255759, lng: 10.076782},
+  {lat: 5.059269, lng: 6.578368},
+  {lat: 6.459019, lng: 8.726381},
+  {lat: 10.247829, lng: 5.844279},
+  {lat: 14.082638, lng: -12.967991},
+  {lat: -23.895216, lng: 22.951632},
+  {lat: -21.052597, lng: 22.406531},
+  {lat: 26.712390, lng: 81.180820},
+  {lat: 10.951219, lng: 77.738927},
+  {lat: 15.362666, lng: 75.290957},
+  {lat: 19.805806, lng: 84.350937},
+  
+  
   
 ]
 
@@ -594,7 +610,7 @@ function initialize() {
           console.log(arr2[1].substring(i))
         }
       }
-
+      
       console.log(int1)
       console.log(arr2)
 
@@ -657,6 +673,7 @@ console.log(panorama.getPov())
     console.log(panorama.getPov())
   })
 
+// ***************     <COMPASS>    *************************************
   google.maps.event.addListener(panorama, 'pov_changed', function() {
     //console.log(panorama.getPov())
     
@@ -678,7 +695,7 @@ console.log(panorama.getPov())
     }
 
   })
-
+// *************** </COMPASS> *************************************
   document.getElementById("round").innerText = "Round: " + round.toString()
 
 
