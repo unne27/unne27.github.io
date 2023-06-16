@@ -687,6 +687,7 @@ function initialize() {
 
   function timerEnded()  {
     onbtnclicked()
+    clearInterval(interval)
   }
 
 
@@ -835,7 +836,7 @@ console.log(panorama.getPov())
  
 
 function onbtnclicked() {
-  clearInterval(interval)
+  
   distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
@@ -912,9 +913,13 @@ function onbtnclicked() {
   
 
   function onnextclicked() {
+    if (markers[0]) {
     markers[0].setMap(null)
+    }
     markers = []
+    if (line) {
     line.setMap(null)
+    }
     placedMarker = false
 
     round += 1
@@ -968,6 +973,7 @@ function onbtnclicked() {
     
     }
   }
+  time = parseInt(timerTime)
   setInterval(countDown, 1000)
   }
 document.getElementById("nextbtn").onclick = onnextclicked
