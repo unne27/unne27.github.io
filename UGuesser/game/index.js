@@ -975,7 +975,7 @@ function onbtnclicked() {
     }
   }
   time = parseInt(timerTime)
-  setInterval(countDown, 1000)
+  interval = setInterval(countDown, 1000)
   }
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
