@@ -669,6 +669,7 @@ function results(score) {
    document.getElementById("score").innerText = score.toString()
 }
 
+let interval
 
 function initialize() {
 
@@ -700,7 +701,7 @@ function initialize() {
   if (isTimer == "true") {
 
     time = timerTime.parseInt()
-    setInterval(countDown, 1000)
+    interval = setInterval(countDown, 1000)
 
   }
 
@@ -832,6 +833,7 @@ console.log(panorama.getPov())
  
 
 function onbtnclicked() {
+  clearInterval(interval)
   distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
@@ -877,14 +879,23 @@ function onbtnclicked() {
     strokeWeight: 2,
   })  
   line.setMap(distmap)
+  guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
 
   document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
 
   } else if (!placedMarker && isTimer != 'true') {
     return
   } else if (!placedMarker && isTimer == 'true') {
+    var corpos = new google.maps.Marker({
+      position: panpos,
+      map: distmap,
+      icon : "flag.png",
+      title: "Correct position",
+    })
     document.getElementById("distance").innerText = "You didn't guess!"
     score = 0
+    guesses.push({"guesspos" : null, "corpos" : panpos})
+
   }
 
   results(score)
@@ -895,8 +906,7 @@ function onbtnclicked() {
   
 
 
-  guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
-
+  
   
 
   function onnextclicked() {
@@ -956,6 +966,7 @@ function onbtnclicked() {
     
     }
   }
+  setInterval(countDown, 1000)
   }
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
