@@ -686,7 +686,7 @@ function initialize() {
 // ******************     <TIMER>    *********************
 
   function timerEnded()  {
-
+    onbtnclicked()
   }
 
 
