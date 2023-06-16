@@ -686,8 +686,9 @@ function initialize() {
 // ******************     <TIMER>    *********************
 
   function timerEnded()  {
-    onbtnclicked()
     clearInterval(interval)
+    onbtnclicked()
+    
   }
 
 
