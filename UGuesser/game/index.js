@@ -931,7 +931,8 @@ function onbtnclicked() {
     guess()
     guessed = false
 
- 
+    time = parseInt(timerTime)
+    interval = setInterval(countDown, 1000)
     
     } else {
     document.getElementById("score").innerHTML = totalscore.toString()
@@ -974,8 +975,7 @@ function onbtnclicked() {
     
     }
   }
-  time = parseInt(timerTime)
-  interval = setInterval(countDown, 1000)
+
   }
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
