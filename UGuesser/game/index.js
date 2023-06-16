@@ -690,6 +690,7 @@ function initialize() {
     time = parseInt(timerTime)
 
     if (document.getElementById("distancemap").style != "display:block;width:100%;height:100%;") {
+    console.log("Timer ended!")
     onbtnclicked()
     }
   }
