@@ -62,6 +62,15 @@ body {
   
 }
 
+#timer {
+  position: fixed;
+  z-index: 25;
+  top: 5%;
+  left: 10%;
+  font-size: large;
+  color: white;
+}
+
 #distancemap {
   display: none;
   width: 100%;

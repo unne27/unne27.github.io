@@ -641,6 +641,10 @@ let oppGuessed = false
 
 let distmap
 
+let time
+
+let placedMarker = false
+
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -675,7 +679,34 @@ function initialize() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const isCustomMap = urlParams.get('isCustomMap')
-  
+  const isTimer = urlParams.get('timer')
+  const timerTime = urlParams.get('time')
+
+// ******************     <TIMER>    *********************
+
+  function timerEnded()  {
+
+  }
+
+
+  function countDown() {
+    if (time > 0) {
+    time -= 1
+    } else {
+      timerEnded()
+    }
+  }
+
+  if (isTimer == "true") {
+
+    time = timerTime.parseInt()
+    setInterval(countDown, 1000)
+
+  }
+
+
+
+// ******************     </TIMER>    *********************
 
   if (isCustomMap == "true") {
     console.log("Yes")
@@ -767,6 +798,7 @@ console.log(panorama.getPov())
     }
     markers.push(marker)
     console.log(panorama.getPov())
+    placedMarker = true
   })
 
 // ***************     <COMPASS>    *************************************
@@ -800,38 +832,36 @@ console.log(panorama.getPov())
  
 
 function onbtnclicked() {
-  document.getElementById("round").innerText = "Round: " + round.toString()
-  var distance = calcDistance(markers[0].position, panpos)
-  guessed = true
-  var score = parseInt((5000 - (distance)).toFixed(0))
-  if (score < 0) {
-    score = 0 
-  }
-  totalscore += score
-  
-  console.log(score)
-  console.log(totalscore)
-  results(score)
-
   distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
     disableDefaultUI: true,
   })
+
+  var score
+
+  if (placedMarker) {
+  document.getElementById("round").innerText = "Round: " + round.toString()
+  var distance = calcDistance(markers[0].position, panpos)
+  guessed = true
+  score = parseInt((5000 - (distance)).toFixed(0))
+  if (score < 0) {
+    score = 0 
+  }
+  totalscore += score
+
+  console.log(score)
+  console.log(totalscore)
+
+  
   var yourpos = new google.maps.Marker({
     position: markers[0].position,
     map: distmap,
     title: "Your position",
+
+    
   })
-  var corpos = new google.maps.Marker({
-    position: panpos,
-    map: distmap,
-    icon : "flag.png",
-    title: "Correct position",
-  })
-  
-  console.log("Placed markers!")
-  document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
+
   var line = new google.maps.Polyline({
     path: [yourpos.position, corpos.position],
     geodesic: false,
@@ -841,15 +871,37 @@ function onbtnclicked() {
   })  
   line.setMap(distmap)
 
+  document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
+
+  } else if (!placedMarker && isTimer != 'true') {
+    return
+  } else if (!placedMarker && isTimer == 'true') {
+    document.getElementById("distance").innerText = "You didn't guess!"
+    score = 0
+  }
+
+  results(score)
+
+  var corpos = new google.maps.Marker({
+    position: panpos,
+    map: distmap,
+    icon : "flag.png",
+    title: "Correct position",
+  })
+  
+  console.log("Placed markers!")
+  
+
+
   guesses.push({"guesspos" : markers[0].position, "corpos" : panpos})
 
-
+  
 
   function onnextclicked() {
     markers[0].setMap(null)
     markers = []
     line.setMap(null)
-    
+    placedMarker = false
 
     round += 1
     if (round <= 5) {
@@ -915,6 +967,7 @@ document.addEventListener('keydown', function(event) {
     }
   }
 })
+
 }
 
 
