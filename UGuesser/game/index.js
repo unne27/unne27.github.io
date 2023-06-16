@@ -702,7 +702,7 @@ function initialize() {
 
   if (isTimer == "true") {
 
-    time = timerTime.parseInt()
+    time = parseInt(timerTime)
     interval = setInterval(countDown, 1000)
     document.getElementById("timer").innerText = time.toString()
   }
