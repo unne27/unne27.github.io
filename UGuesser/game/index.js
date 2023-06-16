@@ -862,6 +862,13 @@ function onbtnclicked() {
     
   })
 
+  var corpos = new google.maps.Marker({
+    position: panpos,
+    map: distmap,
+    icon : "flag.png",
+    title: "Correct position",
+  })
+
   var line = new google.maps.Polyline({
     path: [yourpos.position, corpos.position],
     geodesic: false,
@@ -882,12 +889,7 @@ function onbtnclicked() {
 
   results(score)
 
-  var corpos = new google.maps.Marker({
-    position: panpos,
-    map: distmap,
-    icon : "flag.png",
-    title: "Correct position",
-  })
+
   
   console.log("Placed markers!")
   
