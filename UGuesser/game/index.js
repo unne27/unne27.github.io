@@ -696,13 +696,15 @@ function initialize() {
     } else {
       timerEnded()
     }
+    document.getElementById("timer").innerText = time.toString()
+
   }
 
   if (isTimer == "true") {
 
     time = timerTime.parseInt()
     interval = setInterval(countDown, 1000)
-
+    document.getElementById("timer").innerText = time.toString()
   }
 
 
