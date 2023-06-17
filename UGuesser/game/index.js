@@ -689,7 +689,7 @@ function initialize() {
     clearInterval(interval)
     time = parseInt(timerTime)
     console.log("Timer ended!")
-    consolelog("Interval: " + interval.toString())
+    console.log("Interval: " + interval.toString())
     if (document.getElementById("distancemap").style != "display:block;width:100%;height:100%;") {
     
     onbtnclicked()
