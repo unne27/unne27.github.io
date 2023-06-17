@@ -936,6 +936,7 @@ function onbtnclicked() {
     guessed = false
 
     time = parseInt(timerTime)
+    console.log("Started timer from the onnextclicked() function!")
     interval = setInterval(countDown, 1000)
     
     } else {
