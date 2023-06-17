@@ -712,6 +712,8 @@ function initialize() {
     time = parseInt(timerTime)
     console.log("Started timer from the initialize() function!")
     interval = setInterval(countDown, 1000)
+    console.log("clicked interval: " + interval)
+    console.log("init interval: " + interval)
     document.getElementById("timer").innerText = time.toString()
   }
 
