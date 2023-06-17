@@ -845,7 +845,7 @@ console.log(panorama.getPov())
  
 
 function onbtnclicked() {
-  
+  clearInterval(interval)
   distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
     zoom : 2,
