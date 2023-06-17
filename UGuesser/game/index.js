@@ -709,6 +709,7 @@ function initialize() {
   if (isTimer == "true") {
 
     time = parseInt(timerTime)
+    console.log("Started timer from the initialize() function!")
     interval = setInterval(countDown, 1000)
     document.getElementById("timer").innerText = time.toString()
   }
