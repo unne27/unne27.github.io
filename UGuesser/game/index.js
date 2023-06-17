@@ -948,12 +948,13 @@ function onbtnclicked() {
     document.getElementById("score").innerHTML = totalscore.toString()
     document.getElementById("distance").innerHTML = ""
     for(let i = 0; i < guesses.length; i++) {
+      if (guesses[i]["guesspos"]) {
       var yourmarker = new google.maps.Marker({
         position : guesses[i]["guesspos"],
         map: distmap,
         title: "Your position",
       })
-
+    }
       var cormarker = new google.maps.Marker({
         position: guesses[i]["corpos"],
         map: distmap,
@@ -961,6 +962,7 @@ function onbtnclicked() {
         title: "Correct position",
         
       })
+      if (guesses[i][guesspos]) {
       var newline = new google.maps.Polyline({
         path: [guesses[i]["guesspos"], guesses[i]["corpos"]],
         geodesic: false,
@@ -969,6 +971,7 @@ function onbtnclicked() {
         strokeWeight: 2,
       })
       newline.setMap(distmap)
+    }
     }
     let unparsedPb = window.localStorage.getItem('pb')
     let pb = parseInt(window.localStorage.getItem('pb'))
