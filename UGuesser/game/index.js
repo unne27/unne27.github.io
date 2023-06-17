@@ -692,7 +692,7 @@ function initialize() {
     console.log("Interval: " + interval.toString())
     if (document.getElementById("distancemap").style != "display:block;width:100%;height:100%;") {
     
-    onbtnclicked()
+    onbtnclicked(true)
     }
   }
 
@@ -844,7 +844,7 @@ console.log(panorama.getPov())
 
  
 
-function onbtnclicked() {
+function onbtnclicked(timeEnded) {
   clearInterval(interval)
   distmap = new google.maps.Map(document.getElementById("bigmap"), {
     center : centered,
@@ -895,9 +895,9 @@ function onbtnclicked() {
 
   document.getElementById("distance").innerText = "You were " + distance.toFixed(1) + " kilometers away."
 
-  } else if (!placedMarker && isTimer != 'true') {
+  } else if ((!placedMarker && isTimer != 'true') || (!placedMarker && isTimer == 'true' && !timeEnded)) {
     return
-  } else if (!placedMarker && isTimer == 'true') {
+  } else if (!placedMarker && isTimer == 'true' && timeEnded) {
     var corpos = new google.maps.Marker({
       position: panpos,
       map: distmap,
@@ -992,13 +992,13 @@ function onbtnclicked() {
   }
 document.getElementById("nextbtn").onclick = onnextclicked
 } 
-document.getElementById("guessbtn").onclick = onbtnclicked
+document.getElementById("guessbtn").onclick = btnclickedbefore
 document.addEventListener('keydown', function(event) {
   if (event.keyCode == 32) {
     guessed = true
     console.log(getComputedStyle(document.getElementById("guessbtn")).display)
     if (getComputedStyle(document.getElementById("guessbtn")).display == "block" || getComputedStyle(document.getElementById("guessbtn")).display == "inline-block") {
-      onbtnclicked()
+      onbtnclicked(false)
     }
   }
 })
@@ -1007,7 +1007,9 @@ document.addEventListener('keydown', function(event) {
 
 
 
-
+function btnclickedbefore() {
+  onbtnclicked(false)
+}
 
 window.onload = function() {
   window.scrollTo(0, document.body.scrollHeight)
