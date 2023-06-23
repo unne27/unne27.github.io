@@ -962,7 +962,7 @@ function onbtnclicked(timeEnded) {
         title: "Correct position",
         
       })
-      if (guesses[i][guesspos]) {
+      if (guesses[i]["guesspos"]) {
       var newline = new google.maps.Polyline({
         path: [guesses[i]["guesspos"], guesses[i]["corpos"]],
         geodesic: false,
