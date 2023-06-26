@@ -997,7 +997,7 @@ document.addEventListener('keydown', function(event) {
   if (event.keyCode == 32) {
     guessed = true
     console.log(getComputedStyle(document.getElementById("guessbtn")).display)
-    if (getComputedStyle(document.getElementById("guessbtn")).display == "block" || getComputedStyle(document.getElementById("guessbtn")).display == "inline-block") {
+    if (getComputedStyle(document.getElementById("mappano")).display == "block" || getComputedStyle(document.getElementById("mappano")).display == "inline-block") {
       onbtnclicked(false)
     }
   }
