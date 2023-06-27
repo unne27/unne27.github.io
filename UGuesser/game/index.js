@@ -922,7 +922,7 @@ function onbtnclicked(timeEnded) {
   
 
   function onnextclicked() {
-    map.setZoom(0);
+    map.setZoom(2);
     if (markers[0]) {
     markers[0].setMap(null)
     }
