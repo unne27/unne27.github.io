@@ -1004,6 +1004,12 @@ document.addEventListener('keydown', function(event) {
   }
 })
 
+if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    Document.getElemenyById("round").innerText = "Monkey"
+} else {
+    console.log("This is not an iOS device!");
+}
+  
 }
 
 
