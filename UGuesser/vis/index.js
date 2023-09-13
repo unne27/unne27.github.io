@@ -562,7 +562,7 @@ function initialize() {
         disableDefaultUI: true,
         
       });
-    document.getElementById("map").style = ""
+    document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
     for (let i = 0; i < positions.length; i++) {
       console.log(i)
         var marker = new google.maps.Marker({
@@ -571,11 +571,11 @@ function initialize() {
             title: positions[i]["lat"].toString() + ", " + positions[i]["lng"].toString(),
           })
     }
-    document.getElementById("map").style = ""
+        document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
 }
 
 function onload() {
-  document.getElementById("map").style = ""
+      document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
 }
 
 
