@@ -1004,8 +1004,11 @@ document.addEventListener('keydown', function(event) {
   }
 })
 
-if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-    Document.getElemenyById("round").innerText = "Monkey"
+
+
+if (navigator.platform === 'iPad' || navigator.platform === 'iPhone' || navigator.platform === 'iPod') {
+    console.log("This is an iOS device.");
+  Document.getElemenyById("round").innerText = "Monkey"
 } else {
     console.log("This is not an iOS device!");
 }
