@@ -555,7 +555,13 @@ var positions = [
 ]
   
 function initialize() {
-
+  fetch("locations.txt")
+  .then((res) => res.text())
+  .then((text) => {
+    locations = text
+   })
+  .catch((e) => console.error(e));
+  
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: 0, lng: 0},
         zoom: 2,
