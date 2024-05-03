@@ -559,6 +559,14 @@ function initialize() {
   .then((res) => res.text())
   .then((text) => {
     positions = text
+    positions = positions.split("\n")
+    for(let i=0; i < positions.length; i++) {
+      positions[i].slice(1);
+      positions[i].slice(0, -1);
+      positions[i].replace["'", ""]
+      arr = positions[i].split(",")
+      positions[i] = {lat: parseFloat(arr[0]), lng: parseFloat(arr[1])}
+    }
     map = new google.maps.Map(document.getElementById("map"), {
       center: {lat: 0, lng: 0},
       zoom: 2,
