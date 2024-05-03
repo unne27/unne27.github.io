@@ -676,8 +676,8 @@ let interval
 function initialize() {
 
   fetch("locations.txt")
-  await .then((res) => res.text())
-  await .then((text) => {
+  .then((res) => res.text())
+  .then((text) => {
     positions = text
     positions = positions.split("\n")
     for(let i=0; i < positions.length; i++) {
@@ -686,9 +686,8 @@ function initialize() {
       positions[i].replace["'", ""]
       let arr = positions[i].split(",")
       positions[i] = {lat: parseFloat(arr[0]), lng: parseFloat(arr[1])}
-    }
-   })
-  .catch((e) => console.error(e));
+
+
 
   
 
@@ -1021,7 +1020,9 @@ document.addEventListener('keydown', function(event) {
   }
 })
 
-
+}
+})
+.catch((e) => console.error(e));
 
   
 }
