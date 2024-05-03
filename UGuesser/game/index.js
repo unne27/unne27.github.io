@@ -678,7 +678,7 @@ function initialize() {
   fetch("locations.txt")
   .then((res) => res.text())
   .then((text) => {
-    locations = text
+    positions = text
    })
   .catch((e) => console.error(e));
 
