@@ -673,6 +673,8 @@ function results(score) {
 
 let interval
 
+google.maps.event.addDomListener(window, 'load', initialise);
+
 function initialize() {
 
   fetch("locations.txt")
