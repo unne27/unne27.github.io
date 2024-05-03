@@ -103,7 +103,7 @@ function initialize() {
         map,
         title: "Location",
       })
-      google.maps.event.addListener(marker, "rightclick", function (point) {delMarker(marker)});
+      google.maps.event.addListener(marker, "click", function (point) {delMarker(marker)});
       locations.push(latlng)
       markers.push(marker)
     })
