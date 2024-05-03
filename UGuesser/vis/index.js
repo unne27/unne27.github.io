@@ -559,25 +559,26 @@ function initialize() {
   .then((res) => res.text())
   .then((text) => {
     positions = text
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: {lat: 0, lng: 0},
+      zoom: 2,
+      disableDefaultUI: true,
+      
+    });
+  document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
+  for (let i = 0; i < positions.length; i++) {
+    console.log(i)
+      var marker = new google.maps.Marker({
+          position: positions[i],
+          map,
+          title: positions[i]["lat"].toString() + ", " + positions[i]["lng"].toString(),
+        })
+  }
+      document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
    })
   .catch((e) => console.error(e));
   
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 0, lng: 0},
-        zoom: 2,
-        disableDefaultUI: true,
-        
-      });
-    document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
-    for (let i = 0; i < positions.length; i++) {
-      console.log(i)
-        var marker = new google.maps.Marker({
-            position: positions[i],
-            map,
-            title: positions[i]["lat"].toString() + ", " + positions[i]["lng"].toString(),
-          })
-    }
-        document.getElementById("map").style = "position: fixed; width: 100% height: 100%"
+
 }
 
 function onload() {
