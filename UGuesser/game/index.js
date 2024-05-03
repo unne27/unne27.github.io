@@ -673,7 +673,7 @@ function results(score) {
 
 let interval
 
-google.maps.event.addDomListener(window, 'load', initialise);
+//google.maps.event.addDomListener(window, 'load', initialise);
 
 function initialize() {
 
