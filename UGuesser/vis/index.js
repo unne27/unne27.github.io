@@ -564,7 +564,7 @@ function initialize() {
       positions[i].slice(1);
       positions[i].slice(0, -1);
       positions[i].replace["'", ""]
-      arr = positions[i].split(",")
+      let arr = positions[i].split(",")
       positions[i] = {lat: parseFloat(arr[0]), lng: parseFloat(arr[1])}
     }
     map = new google.maps.Map(document.getElementById("map"), {
