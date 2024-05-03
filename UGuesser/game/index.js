@@ -626,6 +626,8 @@ var positions = [
   
 ]
 
+
+
 function rounding(number, increment, offset) {
   return Math.round((number - offset) / increment ) * increment + offset;
 }
@@ -673,7 +675,14 @@ let interval
 
 function initialize() {
 
+  fetch("locations.txt")
+  .then((res) => res.text())
+  .then((text) => {
+    locations = text
+   })
+  .catch((e) => console.error(e));
 
+  
 
 
 
