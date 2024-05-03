@@ -686,8 +686,8 @@ function initialize() {
       positions[i].slice(1);
       positions[i].slice(0, -1);
       positions[i].replace["'", ""]
-      let arr2 = positions[i].split(",")
-      positions[i] = {lat: parseFloat(arr2[0]), lng: parseFloat(arr2[1])}
+      let arr5 = positions[i].split(",")
+      positions[i] = {lat: parseFloat(arr5[0]), lng: parseFloat(arr5[1])}
 
 
 
