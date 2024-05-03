@@ -676,9 +676,17 @@ let interval
 function initialize() {
 
   fetch("locations.txt")
-  .then((res) => res.text())
-  .then((text) => {
+  await .then((res) => res.text())
+  await .then((text) => {
     positions = text
+    positions = positions.split("\n")
+    for(let i=0; i < positions.length; i++) {
+      positions[i].slice(1);
+      positions[i].slice(0, -1);
+      positions[i].replace["'", ""]
+      let arr = positions[i].split(",")
+      positions[i] = {lat: parseFloat(arr[0]), lng: parseFloat(arr[1])}
+    }
    })
   .catch((e) => console.error(e));
 
