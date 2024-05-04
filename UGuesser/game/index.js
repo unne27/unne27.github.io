@@ -1052,7 +1052,7 @@ while (true) {
 }
 }
 
-
+}
 
 function btnclickedbefore() {
   onbtnclicked(false)
