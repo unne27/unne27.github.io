@@ -684,6 +684,7 @@ function initialize() {
     for(let i = 0; i < /*positions.length*/3; i++) {
       positions[i].slice(1);
       positions[i].slice(0, -1);
+      console.log(positions[i])
       positions[i] = positions[i].replace["'", ""]
       console.log(positions[i])
       positions[i] = positions[i].replace["[", ""]
