@@ -10,23 +10,23 @@ body {
   z-index: 0;
   position: fixed;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
 
 }
 
 #map {
   position: fixed;
   top: 50vh;
-  left: 80vh;
+  left: 80vw;
   overflow: hidden;
   height: 20vh;
-  width: 20vh;
+  width: 20vw;
   z-index: 10;
 }
 
 #map:hover {
   height: 50vh;
-  width: 50vh;
+  width: 50vw;
   top: 40vh;
   left: 50vh;
   transition: 0.7s;
