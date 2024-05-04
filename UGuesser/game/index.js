@@ -634,7 +634,6 @@ function rounding(number, increment, offset) {
 
 
 let flagIcon = document.createElement("flagIcon")
-flagIcon.src = "https://www.unne27.com/UGuesser/game/flag.png"
 
 let round = 1
 
@@ -679,6 +678,8 @@ let interval
 //google.maps.event.addDomListener(window, 'load', initialise);
 
 function initialize() {
+  flagIcon.src = "https://www.unne27.com/UGuesser/game/flag.png"
+
   fetch("locations.txt")
   .then((res) => res.text())
   .then((text) => {
