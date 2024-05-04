@@ -1036,7 +1036,12 @@ window.scrollTo(0, document.body.scrollHeight)
 document.getElementById("map").style = "position: fixed;"
 google.maps.event.trigger(map, "resize");
 document.getElementById("pano").style = "position: fixed;"
-  
+google.maps.event.addListener(map, 'tilesloaded', function(){
+  document.getElementById('map-id').style.position = 'fixed';
+});
+google.maps.event.addListener(panorama, 'tilesloaded', function(){
+  document.getElementById('map-id').style.position = 'fixed';
+});
 }
 
 
