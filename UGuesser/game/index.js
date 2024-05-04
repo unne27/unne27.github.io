@@ -679,7 +679,7 @@ function initialize() {
   fetch("locations.txt")
   .then((res) => res.text())
   .then((text) => {
-    /*positions = text
+    positions = text
     positions = positions.split("\n")
     for(let i = 0; i < positions.length; i++) {
       positions[i].slice(1);
@@ -687,8 +687,8 @@ function initialize() {
       positions[i].replace["'", ""]
       let arr5 = positions[i].split(",")
       positions[i] = {lat: parseFloat(arr5[0]), lng: parseFloat(arr5[1])}
+    }
 
-*/
 
   
 
@@ -1021,8 +1021,8 @@ document.addEventListener('keydown', function(event) {
   }
 })
 
-}
 })
+
 .catch((e) => console.error(e));
 
   
