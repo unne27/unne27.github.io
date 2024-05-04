@@ -560,12 +560,20 @@ function initialize() {
   .then((text) => {
     positions = text
     positions = positions.split("\n")
-    for(let i=0; i < positions.length; i++) {
+    for(let i = 0; i < positions.length; i++) {
+      //console.log(positions[i])
       positions[i].slice(1);
       positions[i].slice(0, -1);
-      positions[i].replace["'", ""]
-      let arr = positions[i].split(",")
-      positions[i] = {lat: parseFloat(arr[0]), lng: parseFloat(arr[1])}
+      //console.log(positions[i])
+      positions[i] = positions[i].replaceAll("'", "")
+      //console.log(positions[i])
+      positions[i] = positions[i].replace("[", "")
+      positions[i] = positions[i].replace("]", "")
+      let arr5 = positions[i].split(",")
+      positions[i] = {lat: parseFloat(arr5[0])-90, lng: parseFloat(arr5[1])-90}
+      /*console.log(positions[i])
+      console.log(arr5)
+      console.log(parseFloat(arr5[0]))*/
     }
     map = new google.maps.Map(document.getElementById("map"), {
       center: {lat: 0, lng: 0},
