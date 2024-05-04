@@ -1024,7 +1024,10 @@ document.addEventListener('keydown', function(event) {
 })
 
 .catch((e) => console.error(e));
-
+window.scrollTo(0, document.body.scrollHeight)
+document.getElementById("map").style = "position: fixed;"
+google.maps.event.trigger(map, "resize");
+document.getElementById("pano").style = "position: fixed;"
   
 }
 
@@ -1035,10 +1038,7 @@ function btnclickedbefore() {
 }
 
 window.onload = function() {
-  window.scrollTo(0, document.body.scrollHeight)
-  document.getElementById("map").style = "position: fixed;"
-  google.maps.event.trigger(map, "resize");
-  document.getElementById("pano").style = "position: fixed;"
+
 }
 //window.initMap = initMap;
 //window.initialize = initialize;
