@@ -1046,6 +1046,9 @@ function btnclickedbefore() {
 }
 
 window.onload = function() {
+  document.getElementById("pano").style = "position: fixed;"
+  document.getElementById("map").style = "position: fixed;"
+  window.scrollTo(0, document.body.scrollHeight)
 
 }
 //window.initMap = initMap;
