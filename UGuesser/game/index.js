@@ -634,7 +634,7 @@ function rounding(number, increment, offset) {
 
 
 let flagIcon = document.createElement("flagIcon")
-flagIcon.src = "flag.png"
+flagIcon.src = "https://www.unne27.com/UGuesser/game/flag.png"
 
 let round = 1
 
