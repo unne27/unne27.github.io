@@ -1046,7 +1046,7 @@ google.maps.event.addListener(panorama, 'tilesloaded', function(){
   document.getElementById('pano').style.position = 'fixed';
 });*/
 while (true) {
-
+  if (document.getElementById('pano').style.position == 'relative') {
   document.getElementById('pano').style.position = 'fixed'
   document.getElementById('map').style.position = 'fixed'
 }
