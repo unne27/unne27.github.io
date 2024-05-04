@@ -132,9 +132,10 @@ function onload() {
         }
     }
     locationsParsed = locationsParsed.replaceAt(locationsParsed.length - 1, ' ')
-    var url = getCurrentURL()
-    var parsedUrl = url.replaceAt(url.length - 9, "game?isCustomMap=true&customMap=")
-    var parsedUrl2 = url.replaceAt(url.length - 1, "?isCustomMap=true&customMap=")
+    var url = "https://www.unne27.com/UGuesser"
+    
+    var parsedUrl = url.replaceAt(url.length, "/game?isCustomMap=true&customMap=")
+    var parsedUrl2 = url.replaceAt(url.length , "/mapmaker?isCustomMap=true&customMap=")
 
     document.getElementById("text").innerText = parsedUrl + locationsParsed + "\n" + parsedUrl2 + locationsParsed
     for (let i = 0; i < locations.length; i++) {
