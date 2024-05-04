@@ -685,6 +685,7 @@ function initialize() {
       positions[i].slice(1);
       positions[i].slice(0, -1);
       positions[i] = positions[i].replace["'", ""]
+      console.log(positions[i])
       positions[i] = positions[i].replace["[", ""]
       positions[i] = positions[i].replace["]", ""]
       let arr5 = positions[i].split(",")
