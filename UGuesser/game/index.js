@@ -909,7 +909,7 @@ function onbtnclicked(timeEnded) {
      
     position: panpos,
     map: distmap,
-    icon : "flag.png",
+    content : "flag.png",
     title: "Correct position",
   })
 
@@ -932,7 +932,7 @@ function onbtnclicked(timeEnded) {
        
       position: panpos,
       map: distmap,
-      icon : "flag.png",
+      content : "flag.png",
       title: "Correct position",
     })
     document.getElementById("distance").innerText = "You didn't guess!"
@@ -992,7 +992,7 @@ function onbtnclicked(timeEnded) {
          
         position: guesses[i]["corpos"],
         map: distmap,
-        icon: "flag.png",
+        content: "flag.png",
         title: "Correct position",
         
       })
