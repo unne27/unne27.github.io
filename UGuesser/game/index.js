@@ -825,7 +825,8 @@ console.log(panorama.getPov())
   map.setStreetView(panorama);
   map.addListener("click", (mapsMouseEvent) => {
     var latlng = mapsMouseEvent.latLng
-    var marker = new google.maps.Marker({
+    var marker = new google.maps.marker.AdvancedMarkerElement({
+      mapId: "DEMO_MAP_ID",
       position: latlng,
       map,
       title: "Your guess",
@@ -893,7 +894,8 @@ function onbtnclicked(timeEnded) {
   console.log(totalscore)
 
   
-  var yourpos = new google.maps.Marker({
+  var yourpos = new google.maps.marker.AdvancedMarkerElement({
+    mapId: "DEMO_MAP_ID",
     position: markers[0].position,
     map: distmap,
     title: "Your position",
@@ -901,7 +903,9 @@ function onbtnclicked(timeEnded) {
     
   })
 
-  var corpos = new google.maps.Marker({
+  
+  var corpos = new google.maps.marker.AdvancedMarkerElement({
+    mapId: "DEMO_MAP_ID",
     position: panpos,
     map: distmap,
     icon : "flag.png",
@@ -923,7 +927,8 @@ function onbtnclicked(timeEnded) {
   } else if ((!placedMarker && isTimer != 'true') || (!placedMarker && isTimer == 'true' && !timeEnded)) {
     return
   } else if (!placedMarker && isTimer == 'true' && timeEnded) {
-    var corpos = new google.maps.Marker({
+    var corpos = new google.maps.markerAdvancedMarkerElement({
+      mapId: "DEMO_MAP_ID",
       position: panpos,
       map: distmap,
       icon : "flag.png",
@@ -975,13 +980,15 @@ function onbtnclicked(timeEnded) {
     document.getElementById("distance").innerHTML = ""
     for(let i = 0; i < guesses.length; i++) {
       if (guesses[i]["guesspos"]) {
-      var yourmarker = new google.maps.Marker({
+      var yourmarker = new google.maps.marker.AdvancedMarkerElement({
+        mapId: "DEMO_MAP_ID",
         position : guesses[i]["guesspos"],
         map: distmap,
         title: "Your position",
       })
     }
-      var cormarker = new google.maps.Marker({
+      var cormarker = new google.maps.marker.AdvancedMarkerElement({
+        mapId: "DEMO_MAP_ID",
         position: guesses[i]["corpos"],
         map: distmap,
         icon: "flag.png",
