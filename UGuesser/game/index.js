@@ -1060,6 +1060,8 @@ function btnclickedbefore() {
 
 window.onload = function() {
   document.getElementById("pano").style = "position: fixed;"
+  google.maps.event.trigger(map, "resize");
+
   document.getElementById("map").style = "position: fixed;"
   window.scrollTo(0, document.body.scrollHeight)
 
