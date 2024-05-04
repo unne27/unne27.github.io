@@ -633,6 +633,9 @@ function rounding(number, increment, offset) {
 }
 
 
+let flagIcon = document.createElement("flagIcon")
+flagIcon.src = "flag.png"
+
 let round = 1
 
 let totalscore = 0
@@ -909,7 +912,7 @@ function onbtnclicked(timeEnded) {
      
     position: panpos,
     map: distmap,
-    content : "flag.png",
+    content : flagIcon,
     title: "Correct position",
   })
 
@@ -932,7 +935,7 @@ function onbtnclicked(timeEnded) {
        
       position: panpos,
       map: distmap,
-      content : "flag.png",
+      content :  flagIcon,
       title: "Correct position",
     })
     document.getElementById("distance").innerText = "You didn't guess!"
@@ -992,7 +995,7 @@ function onbtnclicked(timeEnded) {
          
         position: guesses[i]["corpos"],
         map: distmap,
-        content: "flag.png",
+        content:  flagIcon,
         title: "Correct position",
         
       })
